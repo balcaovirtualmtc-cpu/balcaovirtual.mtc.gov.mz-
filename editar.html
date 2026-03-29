@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Permit | Admin</title>
+    <link rel="icon" type="image/png" href="emblema.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .admin-container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--primary);
+            text-align: center;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 15px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        input,
+        textarea,
+        select {
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .actions {
+            margin-top: 40px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-save {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+        }
+
+        .btn-save:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-view {
+            background-color: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-view:hover {
+            background-color: rgba(37, 99, 235, 0.05);
+        }
+
+        .status-msg {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .status-success {
+            color: #10b981;
+        }
+
+        .status-error {
+            color: #ef4444;
+        }
+
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-container">
+        <h1>Painel de Edição de Permit</h1>
+
+        <form id="editForm">
+            <div class="form-grid">
+                <!-- Header Info -->
+                <div class="form-group">
+                    <label for="permit-title">Tipo de Permit (Título)</label>
+                    <input type="text" id="permit-title" name="permit-title" value="Permit de Passageiros (Regular)">
+                </div>
+                <div class="form-group">
+                    <label for="permit-plate-header">Matrícula (Cabeçalho)</label>
+                    <input type="text" id="permit-plate-header" name="permit-plate-header" value="AKY 372 MP">
+                </div>
+
+                <!-- Quadrante 2 -->
+                <div class="form-group">
+                    <label for="field-codigo">Código</label>
+                    <input type="text" id="field-codigo" name="field-codigo" value="#16341">
+                </div>
+                <div class="form-group">
+                    <label for="field-data-requisicao">Data da Requisição</label>
+                    <input type="text" id="field-data-requisicao" name="field-data-requisicao" value="24/11/2025">
+                </div>
+                <div class="form-group">
+                    <label for="field-cliente">Cliente</label>
+                    <input type="text" id="field-cliente" name="field-cliente" value="ORLANDO JAIME TIVANE">
+                </div>
+                <div class="form-group">
+                    <label for="field-requisitada-por">Requisitada Por</label>
+                    <input type="text" id="field-requisitada-por" name="field-requisitada-por"
+                        value="ORLANDO JAIME TIVANE">
+                </div>
+                <div class="form-group">
+                    <label for="field-nuit">NUIT</label>
+                    <input type="text" id="field-nuit" name="field-nuit" value="154 656 994">
+                </div>
+                <div class="form-group">
+                    <label for="field-bi">BI / ID</label>
+                    <input type="text" id="field-bi" name="field-bi" value="090104619737A">
+                </div>
+
+                <!-- Quadrante 3 -->
+                <div class="form-group">
+                    <label for="field-referencia">Referência</label>
+                    <input type="text" id="field-referencia" name="field-referencia" value="20214530161">
+                </div>
+                <div class="form-group">
+                    <label for="field-data-emissao">Data de Emissão</label>
+                    <input type="text" id="field-data-emissao" name="field-data-emissao" value="27/11/2025">
+                </div>
+                <div class="form-group">
+                    <label for="field-data-validade">Data de Validade</label>
+                    <input type="text" id="field-data-validade" name="field-data-validade" value="27/02/2026">
+                </div>
+                <div class="form-group">
+                    <label for="field-matricula">Matrícula</label>
+                    <input type="text" id="field-matricula" name="field-matricula" value="AKY 372 MP">
+                </div>
+                <div class="form-group">
+                    <label for="field-marca">Marca</label>
+                    <input type="text" id="field-marca" name="field-marca" value="TOYOTA">
+                </div>
+                <div class="form-group">
+                    <label for="field-tipo-permit">Tipo de Permit</label>
+                    <input type="text" id="field-tipo-permit" name="field-tipo-permit" value="Passageiros (Regular)">
+                </div>
+                <div class="form-group">
+                    <label for="field-lotacao">Lotação</label>
+                    <input type="text" id="field-lotacao" name="field-lotacao" value="15">
+                </div>
+                <div class="form-group">
+                    <label for="field-duracao">Duração</label>
+                    <input type="text" id="field-duracao" name="field-duracao" value="Expirado / Expirated">
+                </div>
+                <div class="form-group">
+                    <label for="field-configuracao">Configuração</label>
+                    <input type="text" id="field-configuracao" name="field-configuracao" value="Até 15 Lugares">
+                </div>
+                <div class="form-group">
+                    <label for="field-origem">ORIGEM</label>
+                    <input type="text" id="field-origem" name="field-origem" value="CHOKWE">
+                </div>
+                <div class="form-group full-width">
+                    <label for="field-transito">Trânsito</label>
+                    <textarea id="field-transito" name="field-transito"
+                        rows="3">África do Sul, Angola, Botsuana, Lesoto, Malawi, Maurícia, Namíbia, República Democrática do Congo, Tanzania, Suazilândia, Zâmbia, Zimbabué</textarea>
+                </div>
+            </div>
+
+            <div id="statusMsg" class="status-msg"></div>
+
+            <div class="actions">
+                <button type="button" class="btn-view" onclick="window.open('index.html', '_blank')">Ver Permit</button>
+                <button type="submit" class="btn-save" id="saveBtn">Salvar Alterações</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('editForm');
+        const statusMsg = document.getElementById('statusMsg');
+
+        // Carregar dados atuais do index.html ao iniciar
+        async function loadCurrentData() {
+            try {
+                const response = await fetch('index.html');
+                const html = await response.text();
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+
+                const fields = [
+                    'permit-title', 'permit-plate-header', 'field-codigo',
+                    'field-data-requisicao', 'field-cliente', 'field-requisitada-por',
+                    'field-nuit', 'field-bi', 'field-referencia', 'field-data-emissao',
+                    'field-data-validade', 'field-matricula', 'field-marca',
+                    'field-tipo-permit', 'field-lotacao', 'field-duracao',
+                    'field-configuracao', 'field-origem', 'field-transito'
+                ];
+
+                fields.forEach(id => {
+                    const el = doc.getElementById(id);
+                    if (el && document.getElementById(id)) {
+                        document.getElementById(id).value = el.innerText.trim();
+                    }
+                });
+            } catch (err) {
+                console.warn('Não foi possível carregar dados automáticos (provavelmente por CORS ou arquivo local). Use os valores padrão.');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', loadCurrentData);
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            statusMsg.style.display = 'block';
+            statusMsg.className = 'status-msg';
+            statusMsg.textContent = 'Aguarde, processando atualização...';
+
+            try {
+                // Como não há backend real por padrão em arquivos estáticos,
+                // vamos enviar os dados para o servidor local (se existir)
+                const response = await fetch('/save-permit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    statusMsg.textContent = 'Sucesso! O index.html foi atualizado.';
+                    statusMsg.classList.add('status-success');
+                } else {
+                    throw new Error('Falha no servidor');
+                }
+            } catch (err) {
+                statusMsg.textContent = 'Erro ao salvar. Certifique-se de que o servidor local (server.js) está rodando.';
+                statusMsg.classList.add('status-error');
+
+                // Fallback: Mostrar os dados para o usuário copiar ou informar o Agente
+                console.log('DADOS PARA ATUALIZAÇÃO:', data);
+                alert('O servidor de salvamento não foi detectado. Se você estiver usando o Antigravity, peça para ele aplicar estas alterações.');
+            }
+        });
+    </script>
+</body>
+
+</html>

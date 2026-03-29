@@ -1,0 +1,248 @@
+/* Variáveis globais de cores e definições do sistema de design */
+:root {
+    /* Cor principal do texto (Cinza Escuro) */
+    --primary-color: #333;
+    /* Cor para alertas e destaque de trânsito (Vermelho) */
+    --accent-red: #e63946;
+    /* Cor para as bordas das tabelas e divisórias (Cinza Claro) */
+    --border-color: #ddd;
+    /* Cor de fundo da página no ecrã (Cinza muito azulado) */
+    --bg-color: #f4f7f9;
+    /* Cor de fundo do contentor do permit (Branco) */
+    --card-bg: #ffffff;
+}
+
+/* Reset básico para garantir consistência entre diferentes navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Garante que o padding não aumente o tamanho total dos elementos */
+}
+
+/* Configurações básicas do corpo da página */
+body {
+    /* Define a fonte 'Poppins' como principal, com alternativas do sistema */
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.01em;
+    /* Ajuste fino de kerning para Poppins */
+    background-color: var(--bg-color);
+    color: var(--primary-color);
+    padding: 2rem 0;
+    /* Centraliza o contentor principal no meio do ecrã */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* Estilização do contentor principal (Elemento 5: Card branco) */
+.permit-container {
+    background: var(--card-bg);
+    width: 260mm;
+    min-height: 290mm;
+    padding: 30px;
+    /* Espaçamento entre Elemento 5 e Elemento 4 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+/* Borda Retangular Vertical (Elemento 4) */
+.main-border {
+    border: 1px solid #d4d4d4;
+    padding: 15px;
+    /* Espaçamento entre a borda e o conteúdo interno */
+    /*min-height: calc(297mm - 60px);*/
+    padding-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+/* --- Quadrante 1 (Q1) --- */
+.q1-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0px;
+    /* Removido para as linhas do Q2 começarem logo abaixo */
+}
+
+.logo-section {
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.logo-section img {
+    width: 90px;
+    height: auto;
+}
+
+.header-text-block {
+    width: 50%;
+    text-align: left;
+    /* Alinhamento à esquerda no quadrante superior */
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.text-line {
+    border-bottom: 1px solid #d4d4d4;
+    /* Linhas horizontais do meio para a direita */
+    padding: 2px 0;
+    width: 100%;
+}
+
+.text-line2 {
+    border-bottom: 1px solid #d4d4d4;
+    padding: 2px 0;
+    width: 100%;
+    font-weight: 400;
+}
+
+.text-line.last {
+    border-bottom: none;
+    /* A última linha do Q1 não tem borda se o Q2 começar logo abaixo */
+}
+
+.text-line.spacer {
+    margin-top: 10px;
+}
+
+/* --- Quadrante 2 (Q2) --- */
+.q2-info {
+    margin-top: 0;
+    border-top: 1px solid #d4d4d4;
+    /* Linha que separa Q1 de Q2 */
+}
+
+.info-row {
+    border-bottom: 1px solid #d4d4d4;
+    /* Linhas horizontais ponta a ponta */
+    padding: 0.5px 0;
+    font-size: 11px;
+   /* display: flex;
+    gap: 7px;*/
+}
+
+.info-row.last {
+    border-bottom: none;
+    /* Evita duplicar a linha com o topo da tabela */
+}
+
+.info-label {
+    font-weight: 700;
+    min-width: 120px;
+}
+
+.info-value {
+    font-weight: 400;
+}
+
+/* --- Quadrante 3 (Q3) --- */
+.q3-table-container {
+    margin-top: 7px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.data-table td {
+    padding: 8px;
+    font-size: 12.5px;
+    font-weight: 500;
+    border: 1px solid #d4d4d4;
+    vertical-align: middle;
+}
+
+.table-title {
+    /*text-align: center;*/
+    font-weight: 600;
+    background-color: #f9f9f9;
+}
+
+.col-label {
+    width: 20%;
+    /* Coluna da esquerda menor que a da direita */
+    font-weight: 700;
+    gap: 7px;
+}
+
+.col-value {
+    width: 70%;
+    text-align: center;
+
+}
+
+.col-value-red {
+    color: var(--accent-red);
+    color: red;
+    font-weight: 900;
+    font-size: 14px;
+}
+
+.transit-cell {
+    color: var(--accent-red);
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.5;
+    padding: 15px !important;
+}
+
+/* --- REGRAS DE IMPRESSÃO --- */
+/* Estas regras aplicam-se apenas quando o utilizador clica em Imprimir ou salva em PDF */
+@media print {
+    body {
+        background: none;
+        /* Remove a cor de fundo cinza clara */
+        padding: 0;
+    }
+
+    .permit-container {
+        box-shadow: none;
+        /* Remove a sombra decorativa */
+        border: none;
+        /* Remove bordas arredondadas externas */
+        width: 100%;
+        padding: 20px;
+        /* Ajusta margens de papel para garantir que nada seja cortado */
+    }
+
+    /* Classe para esconder elementos que não devem sair no papel (ex: botões) */
+    .no-print {
+        display: none;
+    }
+}
+
+/* Estilização do botão flutuante para facilitar o teste pelo utilizador */
+.print-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #007bff;
+    /* Cor azul de sistema */
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    /* Sombra e transição para efeito Premium */
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 100;
+}
+
+/* Efeito de hover (passar o rato) no botão */
+.print-btn:hover {
+    transform: translateY(-2px);
+    /* Efeito de elevação */
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}

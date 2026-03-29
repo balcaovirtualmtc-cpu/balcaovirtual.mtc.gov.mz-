@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- Define o tipo de documento como HTML5 -->
+<html lang="pt">
+
+<head>
+    <!-- Define a codificação de caracteres como UTF-8 para suportar acentos -->
+    <meta charset="UTF-8">
+    <!-- Faz com que a página seja responsiva em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que aparece na aba do navegador -->
+    <title>Balcao Virtual MTC | Permit</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="emblema.png">
+    <!-- Liga o ficheiro CSS externo para estilização -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Pré-conexão com os servidores do Google Fonts para carregamento mais rápido -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Importa a fonte 'Poppins' com diferentes espessuras (400 a 700) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+
+<body>
+    <!-- Botão flutuante para触发 a função de impressão do navegador (escondido na impressão real) -->
+    <button class="print-btn no-print" onclick="window.print()">Imprimir Permit</button>
+
+    <!-- Contentor principal que simula o tamanho e margens de uma folha A4 -->
+    <!-- Contentor principal (Elemento 5: Card de fundo branco) -->
+    <div class="permit-container">
+        <!-- Borda Retangular Vertical (Elemento 4) -->
+        <div class="main-border">
+
+            <!-- Quadrante 1 (Q1) -->
+            <header class="q1-header">
+                <div class="logo-section">
+                    <img src="emblema.png" alt="Emblema de Moçambique">
+                </div>
+                <div class="header-text-block">
+                    <div class="text-line">MINISTÉRIO DOS TRANSPORTES E LOGÍSTICA</div>
+                    <div class="text-line">Direcção Nacional dos Transportes e Segurança</div>
+                    <div class="text-line">Departamento dos Transportes</div>
+                    <div class="text-line2" id="permit-title">Permit de Passageiros (Regular)</div>
+                    <div class="text-line2" id="permit-plate-header">AKY 245 MP</div>
+                    <div class="text-line spacer">REPUBLIC OF MOZAMBIQUE</div>
+                    <div class="text-line">MINISTRY OF TRANSPORT AND LOGISTICS</div>
+                    <div class="text-line">National Directorate of Transport and Safety</div>
+                    <div class="text-line">Department of Transport</div>
+                    <div class="text-line2" id="permit-title-en">Permit of Passengers (Regular)</div>
+                    <div class="text-line2" id="permit-plate-header-2">AKY 245 MP</div>
+                </div>
+            </header>
+
+            <!-- Quadrante 2 (Q2) -->
+            <section class="q2-info">
+                <div class="info-row">
+                    <span class="info-label">Código / Code</span> <span id="field-codigo">#16384</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Data da Requisição / Requisition Date</span> <span
+                        id="field-data-requisicao">24/02/2026</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Cliente / Client:</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-value" id="field-cliente">Manuel Fernando</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Requisitada Por / Requested By:</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-value" id="field-requisitada-por">Manuel Fernando</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">NUIT:</span> <span id="field-nuit">10000010</span>
+                </div>
+                <div class="info-row last">
+                    <span class="info-label">BI / ID:</span> <span id="field-bi">02316598745</span>
+                </div>
+            </section>
+
+            <!-- Quadrante 3 (Q3) -->
+            <section class="q3-table-container">
+                <table class="data-table">
+                    <tr>
+                        <td colspan="col-label" class="table-title">Descrição / Description</td>
+                        <td class="col-value"></td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Referência / Reference</td>
+                        <td class="col-value" id="field-referencia">203156</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Data de Emissão / Emission Date</td>
+                        <td class="col-value" id="field-data-emissao">27/03/2026</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Data de Validade / Valid Date</td>
+                        <td class="col-value" id="field-data-validade">27/02/2026</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Matrícula / Registration Car</td>
+                        <td class="col-value" id="field-matricula">AKY 245 MP</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Marca / Brand</td>
+                        <td class="col-value" id="field-marca">TOYOTA</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Tipo de Permit / Permit Type</td>
+                        <td class="col-value" id="field-tipo-permit">Cargas Perigosas</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Lotação / Lotation</td>
+                        <td class="col-value" id="field-lotacao">25</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Duração / Duration</td>
+                        <td class="col-value" id="field-duracao">Expirado / Expirated</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Configuração / Configuration</td>
+                        <td class="col-value" id="field-configuracao">Até 25 Lugares</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">ORIGEM / ORIGIN</td>
+                        <td class="col-value" id="field-origem">BAIXA</td>
+                    </tr>
+                    <tr>
+                        <td class="col-label">Trânsito / Transit</td>
+                        <td class="col-value-red transit-cell" id="field-transito">África do Sul, Angola, Botsuana,
+                            Lesoto, Malawi, Maurícia, Namíbia, República Democrática do
+                            Congo, Tanzania, Suazilândia, Zâmbia, Zimbabué</td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>
